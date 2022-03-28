@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="50895d02a7aa4f7ca66271ea25023093" Name="Diagram1">
+        <EntityTypeShape EntityType="job_DatabaseModel.admin_tb" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="job_DatabaseModel.ApplyJob_tb" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="job_DatabaseModel.Company_tb" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="job_DatabaseModel.Education_tb" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="job_DatabaseModel.inbox_tb" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="job_DatabaseModel.job_categorytb" Width="1.5" PointX="3.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="job_DatabaseModel.Job_location" Width="1.5" PointX="3.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="job_DatabaseModel.jobseeker_tb" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="job_DatabaseModel.PostJob_tb" Width="1.5" PointX="6" PointY="3" IsExpanded="true" />
+        <AssociationConnector Association="job_DatabaseModel.FK__ApplyJob___Compa__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="job_DatabaseModel.FK__ApplyJob___Job_s__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="job_DatabaseModel.FK__ApplyJob___JobID__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="job_DatabaseModel.FK__PostJob_t__Compa__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="job_DatabaseModel.FK__Education__Job_s__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="job_DatabaseModel.FK__PostJob_t__job_c__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="job_DatabaseModel.FK__PostJob_t__Job_l__4BAC3F29" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

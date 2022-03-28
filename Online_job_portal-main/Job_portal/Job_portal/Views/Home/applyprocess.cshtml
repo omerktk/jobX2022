@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "applyprocess";
+    Layout = "~/Views/Shared/_LayoutFrontDesignBlank.cshtml";
+}
+
+<h2 style="text-align:center">Apply</h2>
+
+@if (ViewBag.msg == "0")
+{
+    <form method="post" action="@Url.Action("apply", "home")">
+            <input type="hidden" value="@ViewBag.JobID" name="JobID" />
+            <input type="hidden" value="@ViewBag.Company_ID" name="Company_ID" />
+            <input type="hidden" value="@Session["jsid"]" name="Job_seekerID" />
+            <button type="submit" class="part-time">Apply now</button>
+        </form>
+}
+else { 
+<h1 style="color:red;text-align:center">already applied</h1>
+}

@@ -1,0 +1,218 @@
+﻿
+@{ ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdminDesign.cshtml"; }
+
+
+<style>
+
+    .card {
+        background-color: #50acbf;
+    }
+
+    .card-body h1 {
+        color: white;
+    }
+
+    .card-body h5 {
+        color: white;
+        font-weight: bolder;
+    }
+</style>
+
+
+<div class="container">
+    <h1>Welcome To Administration</h1>
+    <hr />
+    <div class="row">
+        <div class="col-xl-3 xol-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5>Total Job Seeker</h5>
+                    <div class="metric-value d-inline-block">
+                        <h1 class="mb-1">@ViewBag.showcountjobseeker</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 xol-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5>Total Comapny</h5>
+                    <div class="metric-value d-inline-block">
+                        <h1 class="mb-1">@ViewBag.showcountcompany</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 xol-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5>Total Posted Job</h5>
+                    <div class="metric-value d-inline-block">
+                        <h1 class="mb-1">@ViewBag.showcountpostedjob</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 xol-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5>Total Apply Job</h5>
+                    <div class="metric-value d-inline-block">
+                        <h1 class="mb-1">@ViewBag.showcountapplyjob</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <hr />
+    <hr />
+    <h4>Recent Job Posted</h4>
+
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Company</th>
+                <th scope="col">Requried Skill</th>
+                <th scope="col">Min Qulification</th>
+                <th scope="col">Extra Skill</th>
+                <th scope="col">Last Apply Date</th>
+                <th scope="col">Contact</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+
+
+
+
+            </tr>
+        </thead>
+        <tbody>
+
+
+            @foreach (var item in ViewBag.showpostedjob)
+            {
+<tr>
+    <td>
+        @item.JobID
+    </td>
+    <td>
+        @item.CompanyName
+    </td>
+
+    <td>
+        @item.Role
+    </td>
+    <td>
+        @item.Min_Qualification
+    </td>
+    <td>
+        @item.ExtraSkill
+    </td>
+    <td>
+        @item.LastApplyDate
+    </td>
+    <td>
+        @item.Contact_person
+    </td>
+
+
+    <td>
+        @if (item.JobStatus == 0)
+        {
+<div class="alert alert-danger ">Not Active</div> }
+else
+{
+<div class="alert alert-success sm">Active</div>}
+    </td>
+
+
+    <td>
+        @Html.ActionLink("Edit", "PostedJobEdit", new { id = item.JobID }, new { @class = "btn btn-primary  btn-sm" })
+        @*@Html.ActionLink("Details", "Details", new { id = item.JS_ID }, new { @class = "deleteLink btn btn-info btn-sm" })*@
+        @Html.ActionLink("Delete", "Delete", new { id = item.JobID }, new { @class = "btn btn-danger btn-sm" })
+        <button type="button" class="btn btn-info btn-sm" onclick="Details(@item.JobID)" @*data-toggle="modal" data-target="#myModal"*@>Details</button>
+
+    </td>
+</tr>
+}
+
+
+        </tbody>
+    </table>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <p id="txtfname">
+
+                </p>
+                <p>
+
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<script>
+    function Details(id) {
+        $.get("@Url.Action("JobPostedDetail", "Admin")/"+id, function (data) { $('.modal-body').html(data); });
+        $('#myModal').modal('show');
+    }
+
+    $('#myModal').on('hidden.bs.modal' , function (e) {
+        $('.modal-body').html("");
+    })
+</script>
+
+
+
+
+@{
+                <script>
+                    $(document).ready(function () {
+                        $("#dialog-confirm").dialog({
+                            autoOpen: false,
+                            modal: true,
+                            resizable: false,
+                            height: 180,
+                        });
+                        $(".deleteLink").click(function (e) {
+                            e.preventDefault();
+                            var targetUrl = $(this).attr("href");
+
+                            $("#dialog-confirm").dialog({
+                                buttons: {
+                                    "Confirm": function () {
+                                        window.location.href = targetUrl;
+                                    },
+                                    "Cancel": function () {
+                                        $(this).dialog("close");
+                                    }
+                                }
+                            });
+                            $("#dialog-confirm").dialog("open");
+                        });
+                    });
+                </script> }
