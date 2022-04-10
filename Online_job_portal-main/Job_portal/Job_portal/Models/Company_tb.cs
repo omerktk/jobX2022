@@ -14,9 +14,8 @@ namespace Job_portal.Models
 
 using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
-    public partial class Company_tb
+    
+public partial class Company_tb
 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -31,56 +30,28 @@ using System;
 
 
     public int CID { get; set; }
-    
-
-    [Required(ErrorMessage ="Company Name Required")]
-    [Display(Name ="Company Name")]
-
 
     public string CNAME { get; set; }
 
-    [Required(ErrorMessage = "Address is Required")]
-    
-
     public string Address { get; set; }
 
-    [Required(ErrorMessage ="City Required")]
-
-
     public string City { get; set; }
-    [Required(ErrorMessage ="State is Required")]
-    
 
     public string State { get; set; }
-    [Required(ErrorMessage ="Contact Name is Required")]
-    [Display(Name ="Contact Person")]
 
     public string ContactPerson { get; set; }
-    [Required(ErrorMessage ="Mobile Number is Required")]
-    [Display(Name ="Mobile Number")]
 
     public string MobileNo { get; set; }
-    [Required(ErrorMessage ="Contact Number Required")]
-    [Display(Name ="Contact Number")]
 
     public string ContactNumber { get; set; }
-    [Required(ErrorMessage ="Email is Required")]
-    //[Display(Name ="Company Name")]
 
     public string Email { get; set; }
-    [Required(ErrorMessage ="User Name is Required")]
-    [Display(Name ="User Name")]
 
     public string UserName { get; set; }
-    [Required(ErrorMessage ="Password is Required")]
-    //[Display(Name ="Company Name")]
 
     public string Password { get; set; }
-    [Required(ErrorMessage ="Website is Required")]
-    [Display(Name ="Company Website")]
 
     public string Website { get; set; }
-    
 
     public Nullable<System.DateTime> EntryDate { get; set; }
 

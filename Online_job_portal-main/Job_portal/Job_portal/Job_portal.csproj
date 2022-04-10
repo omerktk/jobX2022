@@ -572,6 +572,10 @@
     <Content Include="Views\Company\Index.cshtml" />
     <Content Include="Views\Company\AddJobPosting.cshtml" />
     <Content Include="Views\Company\companyRegistration.cshtml" />
+    <Content Include="Views\Company\ViewJobPosting.cshtml" />
+    <Content Include="Views\Company\CheckJobSeeker.cshtml" />
+    <Content Include="Views\Company\CompanyInfo.cshtml" />
+    <Content Include="Views\Company\companyfullDetailDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

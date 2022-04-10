@@ -107,7 +107,7 @@ namespace Job_portal.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult AddJobPosting(PostJob_tb pstb)
+        public ActionResult AddJobPosting(PostJob_tb pstb, DateTime dates)
         {
             if(ModelState.IsValid)
             {
@@ -115,6 +115,7 @@ namespace Job_portal.Controllers
                 pstb.Company_ID = Convert.ToInt32(Session["comid"]);
                 pstb.JobStatus = 0;
                 pstb.EntryDate = DateTime.Now;
+                pstb.LastApplyDate = dates;
                 db.SaveChanges();
                 TempData["success"] = "Job Post Successfully Done";
                 return RedirectToAction("AddJobPosting");
@@ -122,7 +123,34 @@ namespace Job_portal.Controllers
             return View(pstb);
         }
 
+        public ActionResult ViewJobPosting()
+        {
+            int CompanyID = Convert.ToInt32(Session["comid"]);
+            var ShowPostedJob = db.PostJob_tb.Where(x => x.Company_ID == CompanyID).ToList();
+            return View(ShowPostedJob);
+        }
 
+
+        public ActionResult CheckJobSeeker()
+        {
+            int CompanyID = Convert.ToInt32(Session["comid"]);
+            var CheckApplyJobSeker = db.ApplyJob_tb.Where(x => x.Company_ID == CompanyID).ToList();
+            return View(CheckApplyJobSeker);
+        }
+
+
+        public ActionResult CompanyInfo()
+        {
+            int CompanyID = Convert.ToInt32(Session["comid"]);
+            var checkcompany_info = db.Company_tb.Where(x => x.CID == CompanyID).ToList();
+            return View(checkcompany_info);
+        }
+
+        public ActionResult companyfullDetailDetail(int id)
+        {
+            var companyDetails = db.Company_tb.Find(id);
+            return View(companyDetails);
+        }
 
 
 
