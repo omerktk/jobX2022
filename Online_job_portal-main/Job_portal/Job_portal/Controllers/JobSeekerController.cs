@@ -45,6 +45,7 @@ namespace Job_portal.Controllers
         {
             int jid = Convert.ToInt32(Session["jsid"]);
             var listeducation = db.Education_tb.Where(x => x.Job_seeker_ID== jid).ToList();
+            ViewBag.me = listeducation;
             return View(listeducation);
         }
 
@@ -74,6 +75,65 @@ namespace Job_portal.Controllers
             ViewBag.p = a;
             return View();
         }
+
+
+       
+
+        public ActionResult AddNewEducation()
+        {
+            return View();
+        }
+        
+        public ActionResult SetAddNewEducation(Education_tb jstb, HttpPostedFileBase file)
+        {
+
+            if (file != null)
+            {
+                int jid = Convert.ToInt32(Session["jsid"]);
+                String FileExt = System.IO.Path.GetExtension(file.FileName).ToUpper();
+                if (FileExt == ".PDF")
+                {
+                    int randomNumber = new Random().Next(1, 910);
+                    var newname = randomNumber + "cv" + jid +FileExt;
+                    string docname = System.IO.Path.GetFileName(file.FileName);
+                    string savedoc = Server.MapPath("~/jobseekerimages/" + newname);
+                    file.SaveAs(savedoc);
+
+                    if (ModelState.IsValid)
+                    {
+                        db.Entry(jstb).State = System.Data.Entity.EntityState.Added;
+                        
+                        jstb.Resume = newname;
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                }
+                else if (FileExt == ".DOCX")
+                {
+                    int randomNumber = new Random().Next(1, 910);
+                    var newname = randomNumber + "cv" + jid + FileExt;
+                    string docname = System.IO.Path.GetFileName(file.FileName);
+                    string savedoc = Server.MapPath("~/jobseekerimages/" + newname);
+                    file.SaveAs(savedoc);
+
+                    if (ModelState.IsValid)
+                    {
+                        db.Entry(jstb).State = System.Data.Entity.EntityState.Added;
+
+                        jstb.Resume = newname;
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                }
+                else {
+                    ViewBag.o = 1;
+                    return View();
+                }
+            }
+            return View(jstb);
+        }
+
+
 
         //testing 021
 

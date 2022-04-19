@@ -112,6 +112,7 @@
     <Property Name="Password" Type="nvarchar" MaxLength="60" />
     <Property Name="EntryDate" Type="datetime" />
     <Property Name="Status" Type="int" />
+    <Property Name="ProfileImage" Type="nvarchar" MaxLength="300" />
   </EntityType>
   <EntityType Name="PostJob_tb">
     <Key>

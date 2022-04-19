@@ -105,6 +105,7 @@
     <EntitySetMapping Name="jobseeker_tb">
       <EntityTypeMapping TypeName="job_DatabaseModel.jobseeker_tb">
         <MappingFragment StoreEntitySet="jobseeker_tb">
+          <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
           <ScalarProperty Name="JS_ID" ColumnName="JS_ID" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />

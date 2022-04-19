@@ -39,7 +39,20 @@
                                     </div>
                                 </div>
                             </div>
+                            @{ int c = 1; }
+                            @foreach (var pro in ViewBag.me)
+                            {
+                                c = 1 + c;
 
+
+                            }
+                            @{ 
+                                if (c == 1)
+                                {
+                                     <p>Add your Education by click here<a class="btn_1" href="/JobSeeker/AddNewEducation">Add Education</a></p>
+                                } 
+                               }
+                           
                             <div class="QA_table mb_30">
                                 <!-- table-responsive -->
                                 <table class="table table-responsive" id="showtable">
@@ -57,35 +70,34 @@
                                     <tbody>
                                         @foreach (var item in Model)
                                         {
-                                            <tr>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.EID)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Job_seeker_ID)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.CollageName)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Enrollment_Number)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Semester)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Education)
-                                                </td>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Job_seeker_ID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CollageName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Enrollment_Number)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Semester)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Education)
+                                </td>
 
-                                                <td>
-                                                    @Html.ActionLink("Edit", "Edit", new { id = item.EID }, new { @class = "btn btn-primary  btn-sm" })
-                                                    @*@Html.ActionLink("Details", "Details", new { id = item.JS_ID }, new { @class = "deleteLink btn btn-info btn-sm" })*@
-                                                    @Html.ActionLink("Delete", "Delete", new { id = item.EID }, new { @class = "btn btn-danger btn-sm" })
-                                                    <button type="button" class="btn btn-info btn-sm" onclick="Details(@item.EID)" @*data-toggle="modal" data-target="#myModal"*@>Details..</button>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.EID }, new { @class = "btn btn-primary  btn-sm" })
+                                    @*@Html.ActionLink("Details", "Details", new { id = item.JS_ID }, new { @class = "deleteLink btn btn-info btn-sm" })*@
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.EID }, new { @class = "btn btn-danger btn-sm" })
+                                    <button type="button" class="btn btn-info btn-sm" onclick="Details(@item.EID)" @*data-toggle="modal" data-target="#myModal"*@>Details..</button>
 
-                                                </td>
-                                            </tr>
-                                        }
+                                </td>
+                            </tr>}
 
                                     </tbody>
                                 </table>

@@ -122,6 +122,7 @@
     <Property Name="Status" Type="Int32" />
     <NavigationProperty Name="ApplyJob_tb" Relationship="Self.FK__ApplyJob___Job_s__47DBAE45" FromRole="jobseeker_tb" ToRole="ApplyJob_tb" />
     <NavigationProperty Name="Education_tb" Relationship="Self.FK__Education__Job_s__48CFD27E" FromRole="jobseeker_tb" ToRole="Education_tb" />
+    <Property Name="ProfileImage" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="PostJob_tb">
     <Key>

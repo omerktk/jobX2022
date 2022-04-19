@@ -66,14 +66,24 @@ namespace Job_portal.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult jobseekerRegistration(jobseeker_tb jstb)
+        public ActionResult setjobseekerRegistration(jobseeker_tb jstb, HttpPostedFileBase file,DateTime dates)
         {
-            if(ModelState.IsValid)
+
+            if (file != null)
             {
-                db.Entry(jstb).State = EntityState.Added;
-                jstb.EntryDate = DateTime.Now;
-                db.SaveChanges();
-                return RedirectToAction("login");
+                string imagename = System.IO.Path.GetFileName(file.FileName);
+                string saveImage = Server.MapPath("~/jobseekerimages/"+imagename);
+                file.SaveAs(saveImage);
+
+                if (ModelState.IsValid)
+                {
+                    db.Entry(jstb).State = EntityState.Added;
+                    jstb.EntryDate = DateTime.Now;
+                    jstb.DateOfBirth = Convert.ToDateTime(dates).ToString();
+                    jstb.ProfileImage = imagename;
+                    db.SaveChanges();
+                    return RedirectToAction("login");
+                }
             }
             return View(jstb);
         }
@@ -106,6 +116,7 @@ namespace Job_portal.Controllers
                 if (a != null)
                 {
                     Session["jsid"] = a.JS_ID.ToString();
+                    Session["jsImages"] = a.ProfileImage.ToString();
                     ViewBag.jstatus = "not applied";
                     Session["jobseekerusername"] = a.FirstName.ToString();
 

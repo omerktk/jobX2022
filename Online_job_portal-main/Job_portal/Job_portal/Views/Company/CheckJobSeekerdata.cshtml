@@ -1,8 +1,10 @@
 ﻿
 @{
-    ViewBag.Title = "CheckJobSeeker";
+    ViewBag.Title = "CheckJobSeekerdata";
     Layout = "~/Views/Shared/_LayoutCompanyDashboardDesign.cshtml";
 }
+
+
 
 <div class="main_content_iner ">
     <div class="container-fluid p-0">
@@ -42,51 +44,33 @@
                                 <table class="table table-responsive" id="showtable">
                                     <thead>
                                         <tr>
-                                            <th scope="col">First Name</th>
-                                            <th scope="col">Company ID</th>
-                                            <th scope="col">Job Seeker ID</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col">Entry Date</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Address</th>
+                                            <th scope="col">City</th>
+                                            <th scope="col">MobileNo</th>
+                                            <th scope="col">EmailID</th>
 
 
                                         </tr>
                                     </thead>
+                                    @foreach (var pro in ViewBag.p)
+                                    {
+                                        <tr>
+                                            <td>@pro.FirstName @pro.LastName</td>
+                                            <td>@pro.Address</td>
+                                            <td>@pro.City</td>
+                                            <td>@pro.MobileNo</td>
+                                            <td>@pro.EmailID</td>
 
+                                        </tr>
+                                    }
                                     <tbody>
                                     </tbody>
                                 </table>
-
-                                @{
-                                    var power = 0;
-                                    foreach (var pro in ViewBag.p)
-                                    {
-                                        power = power + 1;
-                                        <ul>
-                                            <li>
-                                                <a href="@Url.Action("CheckJobSeekerdata", new { id=pro.Job_seekerID })" class="btn_1">Request no @power</a>
-
-
-                                            </li>
-                                        </ul>
-                                    }
+                                @foreach (var pro in ViewBag.i)
+                                {
+                                    <a  class="btn_1" href="~/jobseekerimages/@pro.Resume" download>Download CV</a>
                                 }
-
-
-
-
-                                @*@foreach (var item in ViewData["joindata"] as IEnumerable<Job_portal.Models.multiplejoin>)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.jobseekerTable.EmailID)
-                </td>
-
-
-
-
-            </tr>
-        }*@
-
 
 
                             </div>

@@ -103,7 +103,8 @@
                 @Html.DisplayNameFor(model => model.Resume)
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.Resume)
+                <a href="~/jobseekerimages/@Html.DisplayFor(model => model.Resume)" download>Download CV</a>
+                
             </dd>
             <dt>
                 @Html.DisplayNameFor(model => model.EntryDate)

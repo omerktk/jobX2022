@@ -5,7 +5,6 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
 namespace Job_portal.Controllers
 {
     public class CompanyController : Controller
@@ -131,13 +130,23 @@ namespace Job_portal.Controllers
         }
 
 
+      
         public ActionResult CheckJobSeeker()
         {
-            int CompanyID = Convert.ToInt32(Session["comid"]);
-            var CheckApplyJobSeker = db.ApplyJob_tb.Where(x => x.Company_ID == CompanyID).ToList();
-            return View(CheckApplyJobSeker);
+            int idd = Convert.ToInt32(Session["comid"]);
+            var p = db.ApplyJob_tb.Where(U => U.Company_ID == idd).ToList();
+            ViewBag.p = p;
+            return View();
         }
-
+        public ActionResult CheckJobSeekerdata(int id)
+        {
+            var p = db.jobseeker_tb.Where(U => U.JS_ID == id).ToList();
+            var i = db.Education_tb.Where(U => U.Job_seeker_ID == id).ToList();
+            ViewBag.i = i;
+            ViewBag.p = p;
+            
+            return View();
+        }
 
         public ActionResult CompanyInfo()
         {

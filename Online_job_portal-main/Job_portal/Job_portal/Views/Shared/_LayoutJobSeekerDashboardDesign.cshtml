@@ -61,7 +61,21 @@
     <!-- sidebar  -->
     <nav class="sidebar vertical-scroll  ps-container ps-theme-default ps-active-y">
         <div class="logo d-flex justify-content-between">
-            <a href="index.html"><img src="img/logo.png" alt=""></a>
+
+            @{ if (Session["jsid"] != null)
+                {
+                <img src="~/jobseekerimages/@Session["jsImages"]" style="border-radius:80px" width="70" height="150" />
+                    }
+
+                    else
+                    {
+
+                    }
+                }
+
+
+
+
             <div class="sidebar_close_icon d-lg-none">
                 <i class="ti-close"></i>
             </div>
@@ -106,10 +120,12 @@
                     <span>Education Info</span>
                 </a>
                 <ul>
+                  
 
                     <li>
                         @Html.ActionLink("Education Info", "EducAtionInfo", "JobSeeker")
                     </li>
+
 
                 </ul>
 
@@ -278,10 +294,36 @@
                         <div class="header_right d-flex justify-content-between align-items-center">
 
                             <div class="profile_info">
-                                <img src="~/img/client_img.png" alt="#">
+                                @{ if (Session["jsid"] != null)
+                                    {
+                            <img src="~/jobseekerimages/@Session["jsImages"] "/>
+                        }
+
+                        else
+                        {
+
+                        } }
+
+
+                              
+
+
                                 <div class="profile_info_iner">
                                     <div class="profile_author_name">
-                                        <p>Neurologist </p>
+                                        @{ if (Session["jsid"] != null)
+                                            {
+                                    <p>@Session["jobseekerusername"] </p>
+                                    }
+
+                                else
+                                {
+
+                                } }
+
+
+
+
+
                                         <h5>@TempData["username"]</h5>
                                     </div>
                                     <div class="profile_info_details">
